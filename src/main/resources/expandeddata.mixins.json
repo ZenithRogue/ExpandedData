@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.zenithknight.mcmods.expandeddata.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "BlockDataObjectMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

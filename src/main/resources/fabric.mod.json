@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "expandeddata",
+  "version": "${version}",
+  "name": "Expanded Data",
+  "description": "Insert Description Later, lol",
+  "authors": [
+    "ZenithKnight"
+  ],
+  "contact": {
+    "website": "zenithknight.dev"
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+    ],
+    "main": [
+      "dev.zenithknight.mcmods.expandeddata.ExpandedData"
+    ]
+  },
+  "mixins": [
+    "expandeddata.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.17",
+    "minecraft": "1.19.4-beta.1"
+  }
+}
