@@ -54,23 +54,14 @@ public class BlockStateDataObject implements DataCommandObject {
     public NbtCompound getNbt() throws CommandSyntaxException {
         NbtCompound nbt = new NbtCompound();
         // If this is a block entity, initialize nbt from there
-        if (this.entity != null)
+        if (this.entity != null) {
             nbt = this.entity.createNbtWithIdentifyingData();
-        nbt.putInt("x", this.pos.getX());
-        nbt.putInt("y", this.pos.getY());
-        nbt.putInt("z", this.pos.getZ());
-
-        NbtCompound blockStateNbt = new NbtCompound();
-        // To maintain parity with other entities, we use `Name` and `Properties` for nbt pathing
-        blockStateNbt.putString("Name", String.valueOf(Registries.BLOCK.getId(this.state.getBlock())));
-        // For each block state, enumerate in the nbt path block_state.Properties
-        NbtCompound properties = new NbtCompound();
-        this.state.getEntries().forEach((key, value) -> {
-            properties.putString(key.getName(), value.toString());
-        });
-        // Removes extraneous enumeration
-        if (!properties.isEmpty())
-            blockStateNbt.put("Properties", properties);
+        } else {
+            nbt.putInt("x", this.pos.getX());
+            nbt.putInt("y", this.pos.getY());
+            nbt.putInt("z", this.pos.getZ());
+        }
+        NbtCompound blockStateNbt = NbtHelper.fromBlockState(this.state);
         nbt.put("block_state", blockStateNbt);
         return nbt;
     }
