@@ -1,7 +1,7 @@
 # Expanded Data
 Expanded Block Data Objects for Minecraft `data` commands.
 
-This current version is built for Minecraft 1.19.4, but translation is pretty straight forwards between other versions with only minor tweaks required.
+This current version is built for Minecraft 1.20, but translation is pretty straight forwards between other versions with only minor tweaks required.
 
 This is a server-side mod, and is designed with full compatibility in mind for datapack useage.
 
@@ -14,4 +14,4 @@ data get block -188 68 985
 ```js
 {block_state: {Properties: {east: "true", waterlogged: "false", south: "true", north: "false", west: "false"}, Name: "minecraft:white_stained_glass_pane"}, x: -188, y: 68, z: 985}
 ```
-The `block_state` property is designed to have 1-to-1 compatibility with the new 1.19.4 `block_display` entities. This allows block data to be copied to/from real blocks and `block_displays`.
+The `block_state` property is designed to have 1-to-1 compatibility with the `block_display` entities introduced in Minecraft 1.19.4. This allows block data to be copied to/from real blocks and `block_displays`.
