@@ -3,7 +3,7 @@
   "id": "expandeddata",
   "version": "${version}",
   "name": "Expanded Data",
-  "description": "Insert Description Later, lol",
+  "description": "Expanded Block Data Objects for Minecraft data commands.",
   "authors": [
     "ZenithKnight"
   ],
@@ -24,6 +24,6 @@
   ],
   "depends": {
     "fabricloader": ">=0.14.17",
-    "minecraft": "1.20"
+    "minecraft": ">=1.20"
   }
 }

@@ -1,7 +1,7 @@
 # Expanded Data
 Expanded Block Data Objects for Minecraft `data` commands.
 
-This current version is built for Minecraft 1.20, but translation is pretty straight forwards between other versions with only minor tweaks required.
+This current version is built for Minecraft 1.20.1, but translation is pretty straight forwards between other versions with only minor tweaks required.
 
 This is a server-side mod, and is designed with full compatibility in mind for datapack useage.
 
