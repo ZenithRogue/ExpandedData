@@ -25,14 +25,15 @@ data modify block -188 68 985 block_state.Name set value "minecraft:dirt"
 ```hs
 data get @s CursorItem
 ```
-```json
+![image](https://github.com/ZenithRogue/ExpandedData/assets/11393734/4acf3ea0-3351-4df1-81df-b54f063e588b)
+```js
 {id: "minecraft:acacia_planks", Count: 2b}
 ```
 ```hs
 data get @s CraftingItems
 ```
-
-```json
+![image](https://github.com/ZenithRogue/ExpandedData/assets/11393734/09e70832-1700-4a1f-8047-a559e046ef23)
+```js
 [{Slot: 0b, id: "minecraft:sand", Count: 1b}, {Slot: 1b, id: "minecraft:acacia_planks", Count: 4b}, {Slot: 2b, id: "minecraft:dirt", Count: 1b}, {Slot: 3b, id: "minecraft:air", Count: 0b}]
 ```
 As these are data values tied to players, you are unfortunately unable to modify them.  All things mentioned will also work in predicates, just as you would expect.
