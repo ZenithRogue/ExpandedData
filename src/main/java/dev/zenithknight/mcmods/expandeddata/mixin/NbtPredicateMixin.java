@@ -20,7 +20,6 @@ public class NbtPredicateMixin {
             ItemStack itemStack;
             if (!(itemStack = ((PlayerEntity) entity).currentScreenHandler.getCursorStack()).isEmpty()) {
                 nbtCompound.put("CursorItem", itemStack.writeNbt(new NbtCompound()));
-                System.out.print(itemStack);
             }
             if (!((PlayerEntity) entity).playerScreenHandler.getCraftingInput().isEmpty()) {
                 RecipeInputInventory craftingInput = ((PlayerEntity) entity).playerScreenHandler.getCraftingInput();
