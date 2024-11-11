@@ -8,7 +8,6 @@ import net.minecraft.command.argument.NbtPathArgumentType;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtHelper;
-import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
@@ -40,13 +39,13 @@ public class BlockStateDataObject implements DataCommandObject {
         // We do this to prevent block entities from dropping contents on change
         if (this.entity != null) {
             BlockEntity blockEntity = this.world.getBlockEntity(this.pos);
-            blockEntity.readNbt(new NbtCompound());
+            blockEntity.read(new NbtCompound(), this.entity.getWorld().getRegistryManager());
             blockEntity.markDirty();
         }
         this.world.setBlockState(this.pos, blockState);
         if (blockState.hasBlockEntity()){
             BlockEntity blockEntity = this.world.getBlockEntity(this.pos);
-            blockEntity.readNbt(nbt);
+            blockEntity.read(nbt, this.entity.getWorld().getRegistryManager());
             blockEntity.markDirty();
         }
     }
@@ -55,7 +54,7 @@ public class BlockStateDataObject implements DataCommandObject {
         NbtCompound nbt = new NbtCompound();
         // If this is a block entity, initialize nbt from there
         if (this.entity != null) {
-            nbt = this.entity.createNbtWithIdentifyingData();
+            nbt = this.entity.createNbtWithIdentifyingData(this.entity.getWorld().getRegistryManager());
         } else {
             nbt.putInt("x", this.pos.getX());
             nbt.putInt("y", this.pos.getY());

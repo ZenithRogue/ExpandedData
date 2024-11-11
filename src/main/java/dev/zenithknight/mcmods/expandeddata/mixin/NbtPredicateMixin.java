@@ -20,20 +20,23 @@ public class NbtPredicateMixin {
         if (entity instanceof PlayerEntity) {
             ItemStack itemStack;
             if (!(itemStack = ((PlayerEntity) entity).currentScreenHandler.getCursorStack()).isEmpty()) {
-                nbtCompound.put("CursorItem", itemStack.writeNbt(new NbtCompound()));
+                nbtCompound.put("CursorItem", itemStack.toNbt(entity.getRegistryManager()));
             }
             if (!((PlayerEntity) entity).playerScreenHandler.getCraftingInput().isEmpty()) {
                 PlayerScreenHandler screenHandler = ((PlayerEntity) entity).playerScreenHandler;
                 RecipeInputInventory craftingInput = screenHandler.getCraftingInput();
                 NbtList nbtList = new NbtList();
-                for(int i = 0; i < craftingInput.size(); ++i) {
-                    NbtCompound stackNbtCompound = craftingInput.getStack(i).writeNbt(new NbtCompound());
-                    stackNbtCompound.putByte("Slot", (byte) i);
-                    nbtList.add(stackNbtCompound);
+                for(int i = 0; i < 4; ++i) {
+                    ItemStack testStack = craftingInput.getStack(i);
+                    if (!testStack.isEmpty()) {
+                        NbtCompound stackNbtCompound = (NbtCompound) craftingInput.getStack(i).toNbt(entity.getRegistryManager());
+                        stackNbtCompound.putByte("Slot", (byte) i);
+                        nbtList.add(stackNbtCompound);
+                    }
                 }
                 nbtCompound.put("CraftingItems", nbtList);
-                if (screenHandler.getSlot(screenHandler.getCraftingResultSlotIndex()).hasStack()) {
-                    nbtCompound.put("CraftingResult", screenHandler.getSlot(screenHandler.getCraftingResultSlotIndex()).getStack().writeNbt(new NbtCompound()));
+                if (screenHandler.getOutputSlot().hasStack()) {
+                    nbtCompound.put("CraftingResult", screenHandler.getOutputSlot().getStack().toNbt(entity.getRegistryManager()));
                 }
             }
         }
