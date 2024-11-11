@@ -1,7 +1,7 @@
 # Expanded Data
 Expanded Data Objects and NBT Accessors for Minecraft `data` commands.
 
-This current version is built for Minecraft 1.20.1, but translation is pretty straight forwards between other versions with only minor tweaks required.
+This current version is built for Minecraft 1.21.3, but translation is pretty straight forwards between other versions.
 
 This is a server-side mod, and is designed with full compatibility in mind for datapack usage.
 
@@ -21,19 +21,30 @@ You can also set/modify any data found `block_state`, as confined by the typical
 data modify block -188 68 985 block_state.Name set value "minecraft:dirt"
 ```
 
-### Getting CursorItem and CraftingItems
+### Getting CursorItem, CraftingItems, and CraftingResult 
+#### CursorItem
 ```hs
 data get @s CursorItem
 ```
-![image](https://github.com/ZenithRogue/ExpandedData/assets/11393734/4acf3ea0-3351-4df1-81df-b54f063e588b)
+![image](https://github.com/user-attachments/assets/0a138895-66ff-48fd-8fb4-b18a63404690)
 ```js
-{id: "minecraft:acacia_planks", Count: 2b}
+{count: 1, id: "minecraft:diamond_sword"}
 ```
+#### CraftingItems
 ```hs
 data get @s CraftingItems
 ```
-![image](https://github.com/ZenithRogue/ExpandedData/assets/11393734/09e70832-1700-4a1f-8047-a559e046ef23)
+![image](https://github.com/user-attachments/assets/38fecf9c-b501-4bca-8b3c-ef4ed9197766)
 ```js
-[{Slot: 0b, id: "minecraft:sand", Count: 1b}, {Slot: 1b, id: "minecraft:acacia_planks", Count: 4b}, {Slot: 2b, id: "minecraft:dirt", Count: 1b}, {Slot: 3b, id: "minecraft:air", Count: 0b}]
+[{count: 1, Slot: 0b, id: "minecraft:oak_planks"}, {count: 1, Slot: 1b, id: "minecraft:oak_planks"}, {count: 1, Slot: 2b, id: "minecraft:oak_planks"}, {count: 1, Slot: 3b, id: "minecraft:oak_planks"}]
 ```
+#### CraftingResult
+```hs
+data get @s CraftingResult
+```
+![image](https://github.com/user-attachments/assets/57abfc9f-d48b-4983-a401-23e8cb15f76b)
+```js
+{count: 4, id: "minecraft:oak_planks"}
+```
+
 As these are data values tied to players, you are unfortunately unable to modify them.  All things mentioned will also work in predicates, just as you would expect.
